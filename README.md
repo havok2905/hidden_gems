@@ -25,6 +25,11 @@ All `GET` endpoints are free and open for use, however any destructive action re
 
 ## Endpoints
 
+- `/places` ( GET, POST, PUT, PATCH, DELETE )
+- `/places/tag` ( POST )
+- `/places/by_tag` ( GET )
+- `/tags` ( GET, POST, PUT, PATCH, DELETE )
+
 ### Places
 
 #### (GET) /places
