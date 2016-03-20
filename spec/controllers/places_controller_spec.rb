@@ -32,6 +32,26 @@ RSpec.describe PlacesController, type: :controller do
     end
   end
 
+  describe 'by_tags' do
+    before do
+      @place = Place.first
+      @place.tags = [ create(:tag) ]
+      @place.save
+
+      get :by_tags, tags: '1'
+      @result = JSON.parse response.body
+    end
+
+    it 'should bring up the place for that tag' do
+      expect(@result['places'].size).to eq 1
+
+      expect(@result['places'][0]['name']).to eq @place.name
+      expect(@result['places'][0]['description']).to eq @place.description
+      expect(@result['places'][0]['lat']).to eq @place.lat
+      expect(@result['places'][0]['lon']).to eq @place.lon
+    end
+  end
+
   describe 'show' do
     before do
       get :show, id: 2
