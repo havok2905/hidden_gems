@@ -5,6 +5,10 @@ class CreatePlace < ActiveRecord::Migration
       t.float :lon
       t.string :description
       t.string :name
+      t.string :street
+      t.string :city
+      t.string :state
+      t.string :zip
       t.timestamps null: false
     end
   end

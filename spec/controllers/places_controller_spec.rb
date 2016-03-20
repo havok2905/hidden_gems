@@ -2,12 +2,14 @@ require 'rails_helper'
 
 RSpec.describe PlacesController, type: :controller do
 
+
   before do
     @places = [
-      create(:place, name: 'foo', description: 'faz', lat: 0.5, lon: 0.6),
-      create(:place, name: 'bar', description: 'baz', lat: 0.7, lon: 0.8)
+      create(:place, name: 'foo', description: 'faz', lat: 0.5, lon: 0.6, city: 'city_a', street: 'street_a', zip: 'zip_a', state: 'state_a'),
+      create(:place, name: 'bar', description: 'baz', lat: 0.7, lon: 0.8, city: 'city_b', street: 'street_b', zip: 'zip_b', state: 'state_b')
     ]
   end
+
 
   describe 'index' do
     before do
@@ -20,17 +22,14 @@ RSpec.describe PlacesController, type: :controller do
     end
 
     it 'should load the correct places' do
-      expect(@result['places'][0]['name']).to eq @places[0].name
-      expect(@result['places'][0]['description']).to eq @places[0].description
-      expect(@result['places'][0]['lat']).to eq @places[0].lat
-      expect(@result['places'][0]['lon']).to eq @places[0].lon
+      a_result = ComparePlace.compare_hash_instance @result['places'][0], @places[0]
+      b_result = ComparePlace.compare_hash_instance @result['places'][1], @places[1]
 
-      expect(@result['places'][1]['name']).to eq @places[1].name
-      expect(@result['places'][1]['description']).to eq @places[1].description
-      expect(@result['places'][1]['lat']).to eq @places[1].lat
-      expect(@result['places'][1]['lon']).to eq @places[1].lon
+      expect(a_result).to eq true
+      expect(a_result).to eq true
     end
   end
+
 
   describe 'by_tags' do
     before do
@@ -45,12 +44,11 @@ RSpec.describe PlacesController, type: :controller do
     it 'should bring up the place for that tag' do
       expect(@result['places'].size).to eq 1
 
-      expect(@result['places'][0]['name']).to eq @place.name
-      expect(@result['places'][0]['description']).to eq @place.description
-      expect(@result['places'][0]['lat']).to eq @place.lat
-      expect(@result['places'][0]['lon']).to eq @place.lon
+      a_result = ComparePlace.compare_hash_instance @result['places'][0], @place
+      expect(a_result).to eq true
     end
   end
+
 
   describe 'tag' do
     before do
@@ -71,8 +69,8 @@ RSpec.describe PlacesController, type: :controller do
       post :tag, @authorized_params
       result = JSON.parse response.body
 
-      expect(result['place']['tags'][0]['id']).to eq @tag.id
-      expect(result['place']['tags'][0]['name']).to eq @tag.name
+      result_a = CompareTag.compare_hash_instance result['place']['tags'][0], @tag
+      expect(result_a).to eq true
     end
 
     it 'should fail without a secret' do
@@ -83,6 +81,7 @@ RSpec.describe PlacesController, type: :controller do
     end
   end
 
+
   describe 'show' do
     before do
       get :show, id: 2
@@ -90,12 +89,11 @@ RSpec.describe PlacesController, type: :controller do
     end
 
     it 'should load the correct place' do
-      expect(@result['place']['name']).to eq @places[1].name
-      expect(@result['place']['description']).to eq @places[1].description
-      expect(@result['place']['lat']).to eq @places[1].lat
-      expect(@result['place']['lon']).to eq @places[1].lon
+      a_result = ComparePlace.compare_hash_instance @result['place'], @places[1]
+      expect(a_result).to eq true
     end
   end
+
 
   describe 'create' do
     before do
@@ -114,10 +112,8 @@ RSpec.describe PlacesController, type: :controller do
       post :create, @authorized_params
       result = JSON.parse response.body
 
-      expect(result['place']['name']).to eq @place_params[:name]
-      expect(result['place']['description']).to eq @place_params[:description]
-      expect(result['place']['lat']).to eq @place_params[:lat]
-      expect(result['place']['lon']).to eq @place_params[:lon]
+      a_result = ComparePlace.compare_hash_hash result['place'], @place_params
+      expect(a_result).to eq true
     end
 
     it 'should fail without a secret' do
@@ -128,9 +124,10 @@ RSpec.describe PlacesController, type: :controller do
     end
   end
 
+
   describe 'update' do
     before do
-      @place_params = { name: 'rat', description: 'raz', lat: 1.1, lon: 1.2 }
+      @place_params = { name: 'rat', description: 'raz', lat: 1.1, lon: 1.2, city: 'city_c', street: 'street_c', zip: 'zip_c', state: 'state_c' }
       @authorized_params = { id: 2, place: @place_params, secret: ENV['ADMIN_SECRET'] }
       @unauthorized_params = { id: 2, place: @place_params }
     end
@@ -139,20 +136,16 @@ RSpec.describe PlacesController, type: :controller do
       post :update, @authorized_params
       result = JSON.parse response.body
 
-      expect(result['place']['name']).to eq @place_params[:name]
-      expect(result['place']['description']).to eq @place_params[:description]
-      expect(result['place']['lat']).to eq @place_params[:lat]
-      expect(result['place']['lon']).to eq @place_params[:lon]
+      a_result = ComparePlace.compare_hash_hash result['place'], @place_params
+      expect(a_result).to eq true
     end
 
     it 'should update the place with the correct params' do
       post :update, @authorized_params
 
       place = Place.find 2
-      expect(place.name).to eq @place_params[:name]
-      expect(place.description).to eq @place_params[:description]
-      expect(place.lat).to eq @place_params[:lat]
-      expect(place.lon).to eq @place_params[:lon]
+      a_result = ComparePlace.compare_hash_instance @place_params, place
+      expect(a_result).to eq true
     end
 
     it 'should fail without a secret' do
@@ -162,6 +155,7 @@ RSpec.describe PlacesController, type: :controller do
       expect(result['message']).to eq 'unauthorized'
     end
   end
+
 
   describe 'destroy' do
     before do
@@ -174,10 +168,8 @@ RSpec.describe PlacesController, type: :controller do
       post :destroy, @authorized_params
       result = JSON.parse response.body
 
-      expect(result['place']['name']).to eq @place.name
-      expect(result['place']['description']).to eq @place.description
-      expect(result['place']['lat']).to eq @place.lat
-      expect(result['place']['lon']).to eq @place.lon
+      a_result = ComparePlace.compare_hash_instance result['place'], @place
+      expect(a_result).to eq true
     end
 
     it 'should remove the place' do
@@ -194,4 +186,6 @@ RSpec.describe PlacesController, type: :controller do
       expect(result['message']).to eq 'unauthorized'
     end
   end
+
+
 end

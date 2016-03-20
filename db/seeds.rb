@@ -16,6 +16,10 @@ places = Place.create([
     description: 'small, casual, and simple coffee shop',
     lat: 28.6585257,
     lon: -81.182116,
+    street: '1016 Lockwood Blvd',
+    city: 'Oviedo',
+    state: 'FL',
+    zip: '32765',
     tags: [
       tags[0]
     ]

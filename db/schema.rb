@@ -23,11 +23,18 @@ ActiveRecord::Schema.define(version: 20160319232501) do
     t.datetime "updated_at", null: false
   end
 
+  add_index "place_tags", ["place_id"], name: "index_place_tags_on_place_id", using: :btree
+  add_index "place_tags", ["tag_id"], name: "index_place_tags_on_tag_id", using: :btree
+
   create_table "places", force: :cascade do |t|
     t.float    "lat"
     t.float    "lon"
     t.string   "description"
     t.string   "name"
+    t.string   "street"
+    t.string   "city"
+    t.string   "state"
+    t.string   "zip"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end

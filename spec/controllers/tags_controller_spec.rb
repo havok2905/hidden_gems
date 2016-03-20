@@ -20,8 +20,11 @@ RSpec.describe TagsController, type: :controller do
     end
 
     it 'should load the correct tags' do
-      expect(@result['tags'][0]['name']).to eq @tags[0].name
-      expect(@result['tags'][1]['name']).to eq @tags[1].name
+      result_a = CompareTag.compare_hash_instance @result['tags'][0], @tags[0]
+      result_b = CompareTag.compare_hash_instance @result['tags'][1], @tags[1]
+
+      expect(result_a).to eq true
+      expect(result_b).to eq true
     end
   end
 
@@ -32,7 +35,8 @@ RSpec.describe TagsController, type: :controller do
     end
 
     it 'should load the correct tag' do
-      expect(@result['tag']['name']).to eq @tags[1].name
+      result_a = CompareTag.compare_hash_instance @result['tag'], @tags[1]
+      expect(result_a).to eq true
     end
   end
 
@@ -51,7 +55,8 @@ RSpec.describe TagsController, type: :controller do
     it 'should have created a new tag with the correct params' do
       post :create, @authorized_params
       result = JSON.parse response.body
-      expect(result['tag']['name']).to eq @tag_params[:name]
+      result_a = CompareTag.compare_hash_hash result['tag'], @tag_params
+      expect(result_a).to eq true
     end
 
     it 'should fail without a secret' do
@@ -71,13 +76,15 @@ RSpec.describe TagsController, type: :controller do
     it 'should return updated the tag with the correct params' do
       post :update, @authorized_params
       result = JSON.parse response.body
-      expect(result['tag']['name']).to eq @tag_params[:name]
+      result_a = CompareTag.compare_hash_hash result['tag'], @tag_params
+      expect(result_a).to eq true
     end
 
     it 'should update the tag with the correct params' do
       post :update, @authorized_params
       tag = Tag.find 2
-      expect(tag.name).to eq @tag_params[:name]
+      result_a = CompareTag.compare_hash_instance @tag_params, tag
+      expect(result_a).to eq true
     end
 
     it 'should fail without a secret' do
@@ -97,7 +104,8 @@ RSpec.describe TagsController, type: :controller do
     it 'should return the destroyed tag' do
       post :destroy, @authorized_params
       result = JSON.parse response.body
-      expect(result['tag']['name']).to eq @tag.name
+      result_a = CompareTag.compare_hash_instance result['tag'], @tag
+      expect(result_a).to eq true
     end
 
     it 'should remove the tag' do

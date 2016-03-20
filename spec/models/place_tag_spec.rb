@@ -8,6 +8,11 @@
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
+# Indexes
+#
+#  index_place_tags_on_place_id  (place_id)
+#  index_place_tags_on_tag_id    (tag_id)
+#
 
 require 'rails_helper'
 
