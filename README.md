@@ -5,6 +5,10 @@
 - **Ruby** 2.2.1p85
 - **Rails** 4.2.4
 
+## Tests
+
+Run `rspec spec` in the root of the project directory to run all unit tests. **Pull requests will not be accepted unless all tests pass.**
+
 ## Authorization
 
 All `GET` endpoints are free and open for use, however any destructive action requires a secret key that will be added as a parameter to your request like so.
