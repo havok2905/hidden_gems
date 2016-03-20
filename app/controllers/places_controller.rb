@@ -1,30 +1,30 @@
 class PlacesController < ApplicationController
   def index
-    render json: places
+    render_for_all places
   end
 
   def show
-    render json: place
-  end
-
-  def create
-    render json: new_place
-  end
-
-  def update
-    render json: update_place
-  end
-
-  def destroy
-    render json: destroy_place
+    render_for_all place
   end
 
   def by_tags
-    render json: places_by_tags
+    render_for_all places_by_tags
+  end
+
+  def create
+    render_for_admin new_place
+  end
+
+  def update
+    render_for_admin update_place
+  end
+
+  def destroy
+    render_for_admin destroy_place
   end
 
   def tag
-    render json: tag_place
+    render_for_admin tag_place
   end
 
   private

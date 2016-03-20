@@ -56,18 +56,30 @@ RSpec.describe PlacesController, type: :controller do
     before do
       @place = create :place
       @tag = create :tag
-      post :tag, id: @place.id, tag_id: @tag.id
-      @result = JSON.parse response.body
+      @authorized_params = { id: @place.id, tag_id: @tag.id, secret: ENV['ADMIN_SECRET'] }
+      @unauthorized_params = { id: @place.id, tag_id: @tag.id }
     end
 
     it 'should add a tag to the place' do
+      post :tag, @authorized_params
+
       place = Place.find @place.id
       expect(place.tags.size).to eq 1
     end
 
     it 'should return the place with the new tag' do
-      expect(@result['place']['tags'][0]['id']).to eq @tag.id
-      expect(@result['place']['tags'][0]['name']).to eq @tag.name
+      post :tag, @authorized_params
+      result = JSON.parse response.body
+
+      expect(result['place']['tags'][0]['id']).to eq @tag.id
+      expect(result['place']['tags'][0]['name']).to eq @tag.name
+    end
+
+    it 'should fail without a secret' do
+      post :tag, @unauthorized_params
+      result = JSON.parse response.body
+
+      expect(result['message']).to eq 'unauthorized'
     end
   end
 
@@ -88,61 +100,98 @@ RSpec.describe PlacesController, type: :controller do
   describe 'create' do
     before do
       @place_params = { name: 'rat', description: 'raz', lat: 1.1, lon: 1.2 }
-      post :create, place: @place_params
-      @result = JSON.parse response.body
+      @authorized_params = { place: @place_params, secret: ENV['ADMIN_SECRET'] }
+      @unauthorized_params = { place: @place_params }
     end
 
     it 'should have created a new place' do
+      post :create, @authorized_params
+
       expect(Place.count).to eq(@places.size + 1)
     end
 
     it 'should have created a new place with the correct params' do
-      expect(@result['place']['name']).to eq @place_params[:name]
-      expect(@result['place']['description']).to eq @place_params[:description]
-      expect(@result['place']['lat']).to eq @place_params[:lat]
-      expect(@result['place']['lon']).to eq @place_params[:lon]
+      post :create, @authorized_params
+      result = JSON.parse response.body
+
+      expect(result['place']['name']).to eq @place_params[:name]
+      expect(result['place']['description']).to eq @place_params[:description]
+      expect(result['place']['lat']).to eq @place_params[:lat]
+      expect(result['place']['lon']).to eq @place_params[:lon]
+    end
+
+    it 'should fail without a secret' do
+      post :create, @unauthorized_params
+      result = JSON.parse response.body
+
+      expect(result['message']).to eq 'unauthorized'
     end
   end
 
   describe 'update' do
     before do
       @place_params = { name: 'rat', description: 'raz', lat: 1.1, lon: 1.2 }
-      post :update, id: 2, place: @place_params
-      @result = JSON.parse response.body
+      @authorized_params = { id: 2, place: @place_params, secret: ENV['ADMIN_SECRET'] }
+      @unauthorized_params = { id: 2, place: @place_params }
     end
 
     it 'should return updated the place with the correct params' do
-      expect(@result['place']['name']).to eq @place_params[:name]
-      expect(@result['place']['description']).to eq @place_params[:description]
-      expect(@result['place']['lat']).to eq @place_params[:lat]
-      expect(@result['place']['lon']).to eq @place_params[:lon]
+      post :update, @authorized_params
+      result = JSON.parse response.body
+
+      expect(result['place']['name']).to eq @place_params[:name]
+      expect(result['place']['description']).to eq @place_params[:description]
+      expect(result['place']['lat']).to eq @place_params[:lat]
+      expect(result['place']['lon']).to eq @place_params[:lon]
     end
 
     it 'should update the place with the correct params' do
+      post :update, @authorized_params
+
       place = Place.find 2
       expect(place.name).to eq @place_params[:name]
       expect(place.description).to eq @place_params[:description]
       expect(place.lat).to eq @place_params[:lat]
       expect(place.lon).to eq @place_params[:lon]
     end
+
+    it 'should fail without a secret' do
+      post :update, @unauthorized_params
+      result = JSON.parse response.body
+
+      expect(result['message']).to eq 'unauthorized'
+    end
   end
 
   describe 'destroy' do
     before do
       @place = Place.find(2)
-      post :destroy, id: 2
-      @result = JSON.parse response.body
+      @authorized_params = { id: 2, secret: ENV['ADMIN_SECRET'] }
+      @unauthorized_params = { id: 2 }
     end
 
     it 'should return the destroyed place' do
-      expect(@result['place']['name']).to eq @place.name
-      expect(@result['place']['description']).to eq @place.description
-      expect(@result['place']['lat']).to eq @place.lat
-      expect(@result['place']['lon']).to eq @place.lon
+      post :destroy, @authorized_params
+      result = JSON.parse response.body
+
+      expect(result['place']['name']).to eq @place.name
+      expect(result['place']['description']).to eq @place.description
+      expect(result['place']['lat']).to eq @place.lat
+      expect(result['place']['lon']).to eq @place.lon
     end
 
     it 'should remove the place' do
+      post :destroy, @authorized_params
+      result = JSON.parse response.body
+
       expect(Place.count).to eq 1
+    end
+
+    it 'should fail without a secret' do
+      post :destroy, @unauthorized_params
+      result = JSON.parse response.body
+
+      expect(result['message']).to eq 'unauthorized'
     end
   end
 end

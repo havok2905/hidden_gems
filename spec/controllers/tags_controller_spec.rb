@@ -39,49 +39,76 @@ RSpec.describe TagsController, type: :controller do
   describe 'create' do
     before do
       @tag_params = { name: 'foo' }
-      post :create, tag: @tag_params
-      @result = JSON.parse response.body
+      @authorized_params = { tag: @tag_params, secret: ENV['ADMIN_SECRET'] }
+      @unauthorized_params = { tag: @tag_params }
     end
 
     it 'should have created a new tag' do
+      post :create, @authorized_params
       expect(Tag.count).to eq(@tags.size + 1)
     end
 
     it 'should have created a new tag with the correct params' do
-      expect(@result['tag']['name']).to eq @tag_params[:name]
+      post :create, @authorized_params
+      result = JSON.parse response.body
+      expect(result['tag']['name']).to eq @tag_params[:name]
+    end
+
+    it 'should fail without a secret' do
+      post :create, @unauthorized_params
+      result = JSON.parse response.body
+      expect(result['message']).to eq 'unauthorized'
     end
   end
 
   describe 'update' do
     before do
       @tag_params = { name: 'rat' }
-      post :update, id: 2, tag: @tag_params
-      @result = JSON.parse response.body
+      @authorized_params = { id: 2, tag: @tag_params, secret: ENV['ADMIN_SECRET'] }
+      @unauthorized_params = { id: 2, tag: @tag_params }
     end
 
     it 'should return updated the tag with the correct params' do
-      expect(@result['tag']['name']).to eq @tag_params[:name]
+      post :update, @authorized_params
+      result = JSON.parse response.body
+      expect(result['tag']['name']).to eq @tag_params[:name]
     end
 
     it 'should update the tag with the correct params' do
+      post :update, @authorized_params
       tag = Tag.find 2
       expect(tag.name).to eq @tag_params[:name]
+    end
+
+    it 'should fail without a secret' do
+      post :update, @unauthorized_params
+      result = JSON.parse response.body
+      expect(result['message']).to eq 'unauthorized'
     end
   end
 
   describe 'destroy' do
     before do
       @tag = Tag.find(2)
-      post :destroy, id: 2
-      @result = JSON.parse response.body
+      @authorized_params = { id: 2, secret: ENV['ADMIN_SECRET'] }
+      @unauthorized_params = { id: 2 }
     end
 
     it 'should return the destroyed tag' do
-      expect(@result['tag']['name']).to eq @tag.name
+      post :destroy, @authorized_params
+      result = JSON.parse response.body
+      expect(result['tag']['name']).to eq @tag.name
     end
 
     it 'should remove the tag' do
+      post :destroy, @authorized_params
       expect(Tag.count).to eq 1
+    end
+
+    it 'should fail without a secret' do
+      post :destroy, @unauthorized_params
+      result = JSON.parse response.body
+      expect(result['message']).to eq 'unauthorized'
     end
   end
 end

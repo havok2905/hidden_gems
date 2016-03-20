@@ -1,22 +1,22 @@
 class TagsController < ApplicationController
   def index
-    render json: tags
+    render_for_all tags
   end
 
   def show
-    render json: tag
+    render_for_all tag
   end
 
   def create
-    render json: new_tag
+    render_for_admin new_tag
   end
 
   def update
-    render json: update_tag
+    render_for_admin update_tag
   end
 
   def destroy
-    render json: destroy_tag
+    render_for_admin destroy_tag
   end
 
   private
