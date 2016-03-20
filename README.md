@@ -86,7 +86,7 @@ All `GET` endpoints are free and open for use, however any destructive action re
         {
           "id": 1,
           "name": "coffee"
-        },"
+        },
         {
           "id": 2,
           "name": "breakfast"
