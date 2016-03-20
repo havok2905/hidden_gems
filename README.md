@@ -40,6 +40,10 @@ All `GET` endpoints are free and open for use, however any destructive action re
       "description": "small, casual, and simple coffee shop",
       "lat": 28.6585257,
       "lon": -81.182116,
+      "street": "1016 Lockwood Blvd",
+      "city": "Oviedo",
+      "state": "FL",
+      "zip": "32765",
       "tags": [
         {
           "id": 1,
@@ -74,11 +78,15 @@ All `GET` endpoints are free and open for use, however any destructive action re
       "description": "small, casual, and simple coffee shop",
       "lat": 28.6585257,
       "lon": -81.182116,
+      "street": "1016 Lockwood Blvd",
+      "city": "Oviedo",
+      "state": "FL",
+      "zip": "32765",
       "tags": [
         {
           "id": 1,
           "name": "coffee"
-        },
+        },"
         {
           "id": 2,
           "name": "breakfast"
@@ -102,6 +110,10 @@ All `GET` endpoints are free and open for use, however any destructive action re
       "description": "small, casual, and simple coffee shop",
       "lat": 28.6585257,
       "lon": -81.182116,
+      "street": "1016 Lockwood Blvd",
+      "city": "Oviedo",
+      "state": "FL",
+      "zip": "32765",
       "tags": [
         {
           "id": 1,
@@ -129,6 +141,10 @@ All `GET` endpoints are free and open for use, however any destructive action re
     "description": "small, casual, and simple coffee shop",
     "lat": 28.6585257,
     "lon": -81.182116,
+    "street": "1016 Lockwood Blvd",
+    "city": "Oviedo",
+    "state": "FL",
+    "zip": "32765",
     "tags": [
       {
         "id": 1,
@@ -149,7 +165,11 @@ All `GET` endpoints are free and open for use, however any destructive action re
     "name": "Coffeehaus",
     "description": "small, casual, and simple coffee shop",
     "lat": 28.6585257,
-    "lon": -81.182116
+    "lon": -81.182116,
+    "street": "1016 Lockwood Blvd",
+    "city": "Oviedo",
+    "state": "FL",
+    "zip": "32765",
   },
   "secret": "SECRET_KEY"
 }
@@ -165,6 +185,10 @@ All `GET` endpoints are free and open for use, however any destructive action re
     "description": "small, casual, and simple coffee shop",
     "lat": 28.6585257,
     "lon": -81.182116,
+    "street": "1016 Lockwood Blvd",
+    "city": "Oviedo",
+    "state": "FL",
+    "zip": "32765",
     "tags": [
       {
         "id": 1,
@@ -186,7 +210,11 @@ All `GET` endpoints are free and open for use, however any destructive action re
     "name": "Coffeehaus",
     "description": "small, casual, and simple coffee shop",
     "lat": 28.6585257,
-    "lon": -81.182116
+    "lon": -81.182116,
+    "street": "1016 Lockwood Blvd",
+    "city": "Oviedo",
+    "state": "FL",
+    "zip": "32765"
   },
   "secret": "SECRET_KEY"
 }
@@ -202,6 +230,10 @@ All `GET` endpoints are free and open for use, however any destructive action re
     "description": "small, casual, and simple coffee shop",
     "lat": 28.6585257,
     "lon": -81.182116,
+    "street": "1016 Lockwood Blvd",
+    "city": "Oviedo",
+    "state": "FL",
+    "zip": "32765",
     "tags": [
       {
         "id": 1,
@@ -233,6 +265,10 @@ All `GET` endpoints are free and open for use, however any destructive action re
     "description": "small, casual, and simple coffee shop",
     "lat": 28.6585257,
     "lon": -81.182116,
+    "street": "1016 Lockwood Blvd",
+    "city": "Oviedo",
+    "state": "FL",
+    "zip": "32765",
     "tags": [
       {
         "id": 1,
