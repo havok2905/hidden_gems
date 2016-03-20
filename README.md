@@ -5,6 +5,20 @@
 - **Ruby** 2.2.1p85
 - **Rails** 4.2.4
 
+## Authorization
+
+All `GET` endpoints are free and open for use, however any destructive action requires a secret key that will be added as a parameter to your request like so.
+
+```json
+{
+  "foobar": {
+    "foo": "foo",
+    "bar": "bar"
+  },
+  "secret": "SECRET_KEY"
+}
+```
+
 ## Endpoints
 
 ### Places
@@ -40,7 +54,8 @@
 ```json
 {
   "id": 1,
-  "tag_id": 2
+  "tag_id": 2,
+  "secret": "SECRET_KEY"
 }
 ```
 
@@ -131,7 +146,8 @@
     "description": "small, casual, and simple coffee shop",
     "lat": 28.6585257,
     "lon": -81.182116
-  }
+  },
+  "secret": "SECRET_KEY"
 }
 ```
 
@@ -167,7 +183,8 @@
     "description": "small, casual, and simple coffee shop",
     "lat": 28.6585257,
     "lon": -81.182116
-  }
+  },
+  "secret": "SECRET_KEY"
 }
 ```
 
@@ -197,7 +214,8 @@
 
 ```json
 {
-  "id": 1
+  "id": 1,
+  "secret": "SECRET_KEY"
 }
 ```
 
@@ -265,7 +283,8 @@
 {
   "tag": {
     "name": "coffee"
-  }
+  },
+  "secret": "SECRET_KEY"
 }
 ```
 
@@ -276,7 +295,8 @@
   "tag": {
     "id": 2,
     "name": "coffee"
-  }
+  },
+  "secret": "SECRET_KEY"
 }
 ```
 
@@ -289,7 +309,8 @@
   "id": 2,
   "tag": {
     "name": "coffee"
-  }
+  },
+  "secret": "SECRET_KEY"
 }
 ```
 
@@ -310,7 +331,8 @@
 
 ```json
 {
-  "id": 2
+  "id": 2,
+  "secret": "SECRET_KEY"
 }
 ```
 
