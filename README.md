@@ -33,6 +33,43 @@
 }
 ```
 
+#### (POST) /places/tag
+
+##### Params
+
+```json
+{
+  "id": 1,
+  "tag_id": 2
+}
+```
+
+##### Returns
+
+```json
+{
+  "places": [
+    {
+      "id": 1,
+      "name": "Coffeehaus",
+      "description": "small, casual, and simple coffee shop",
+      "lat": 28.6585257,
+      "lon": -81.182116,
+      "tags": [
+        {
+          "id": 1,
+          "name": "coffee"
+        },
+        {
+          "id": 2,
+          "name": "breakfast"
+        }
+      ]
+    }
+  ]
+}
+```
+
 #### (GET) /places/by_tags/1,2
 
 ##### Returns

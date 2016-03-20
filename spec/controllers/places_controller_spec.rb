@@ -52,6 +52,25 @@ RSpec.describe PlacesController, type: :controller do
     end
   end
 
+  describe 'tag' do
+    before do
+      @place = create :place
+      @tag = create :tag
+      post :tag, id: @place.id, tag_id: @tag.id
+      @result = JSON.parse response.body
+    end
+
+    it 'should add a tag to the place' do
+      place = Place.find @place.id
+      expect(place.tags.size).to eq 1
+    end
+
+    it 'should return the place with the new tag' do
+      expect(@result['place']['tags'][0]['id']).to eq @tag.id
+      expect(@result['place']['tags'][0]['name']).to eq @tag.name
+    end
+  end
+
   describe 'show' do
     before do
       get :show, id: 2

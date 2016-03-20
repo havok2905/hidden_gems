@@ -23,6 +23,10 @@ class PlacesController < ApplicationController
     render json: places_by_tags
   end
 
+  def tag
+    render json: tag_place
+  end
+
   private
 
   def place_params
@@ -30,7 +34,7 @@ class PlacesController < ApplicationController
   end
 
   def places
-    Place.all
+    @places ||= Place.all
   end
 
   def places_by_tags
@@ -39,7 +43,11 @@ class PlacesController < ApplicationController
   end
 
   def place
-    actions = %w(show update destroy)
+    @place ||= found
+  end
+
+  def found
+    actions = %w(show update destroy tag)
     current_action = params[:action]
     actions.include?(current_action) && Place.find(params[:id])
   end
@@ -55,5 +63,12 @@ class PlacesController < ApplicationController
 
   def destroy_place
     place.destroy
+  end
+
+  def tag_place
+    tag = Tag.find params[:tag_id]
+    place.tags.push tag
+    place.save
+    place
   end
 end
