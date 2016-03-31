@@ -11,6 +11,10 @@ class PlacesController < ApplicationController
     render_for_all places_by_tags
   end
 
+  def by_tag_names
+    render_for_all places_by_tag_names
+  end
+
   def create
     render_for_admin new_place
   end
@@ -40,6 +44,11 @@ class PlacesController < ApplicationController
   def places_by_tags
     tags = params[:tags].split(',')
     Place.by_tag_ids tags
+  end
+
+  def places_by_tag_names
+    tags = params[:tags].split(',')
+    Place.by_tag_names tags
   end
 
   def place

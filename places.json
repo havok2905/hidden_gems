@@ -1,0 +1,176 @@
+[
+  {
+    "lat":         28.554357,
+    "lon":         -81.3245887,
+    "description": "Good beer, cider, giant burgers, and laid back.",
+    "name":        "Oblivion Taproom",
+    "street":      "5101 East Colonial Drive",
+    "city":        "Orlando",
+    "state":       "Florida",
+    "zip":         "32803",
+    "tags": [
+      { "name": "bar" },
+      { "name": "beer" },
+      { "name": "cider" },
+      { "name": "craft" },
+      { "name": "burger" }
+    ]
+  },
+  {
+    "lat":         28.557758,
+    "lon":         -81.3668618,
+    "description": "Asian fusion tacos and great drunk food.",
+    "name":        "Tako Cheena",
+    "street":      "932 North Mills Avenue",
+    "city":        "Orlando",
+    "state":       "Florida",
+    "zip":         "32803",
+    "tags": [
+      { "name": "asian" },
+      { "name": "mexican" },
+      { "name": "taco" },
+      { "name": "late night" }
+    ]
+  },
+  {
+    "lat":         28.5557585,
+    "lon":         -81.2427538,
+    "description": "Incredible craft coffee and a great place to study.",
+    "name":        "Vespr",
+    "street":      "626 North Alafaya Trail",
+    "city":        "Orlando",
+    "state":       "Florida",
+    "zip":         "32828",
+    "tags": [
+      { "name": "coffee" },
+      { "name": "beer" },
+      { "name": "craft" },
+      { "name": "hipster" }
+    ]
+  },
+  {
+    "lat":         28.6738525,
+    "lon":         -81.2063356,
+    "description": "Good coffee, really cozy, and out of the way.",
+    "name":        "Kaioen Coffee",
+    "street":      "254 North Division Street",
+    "city":        "Oviedo",
+    "state":       "Florida",
+    "zip":         "32765",
+    "tags": [
+      { "name": "small" },
+      { "name": "quiet" },
+      { "name": "coffee" }
+    ]
+  },
+  {
+    "lat":         28.5962223,
+    "lon":         -81.3104044,
+    "description": "A nerdy speakeay in the back of a comic shop.",
+    "name":        "The Geek Easy",
+    "street":      "114 South Semoran Blvd",
+    "city":        "Winter Park",
+    "state":       "Florida",
+    "zip":         "32792",
+    "tags": [
+      { "name": "bar" },
+      { "name": "nerdy" },
+      { "name": "speakeasy" },
+      { "name": "music" }
+    ]
+  },
+  {
+    "lat":         28.5983022,
+    "lon":         -81.2216521,
+    "description": "A great college hangout by UCF with enormous pizza.",
+    "name":        "Lazy Moon Pizza",
+    "street":      "11551 University Blvd",
+    "city":        "Orlando",
+    "state":       "Florida",
+    "zip":         "32817",
+    "tags": [
+      { "name": "pizza" },
+      { "name": "beer" },
+      { "name": "giant" }
+    ]
+  },
+  {
+    "lat":         28.5487903,
+    "lon":         -81.3544424,
+    "description": "Roast beef sandwiches for decades.",
+    "name":        "Beefy King",
+    "street":      "424 North Bumby Ave",
+    "city":        "Orlando",
+    "state":       "Florida",
+    "zip":         "32803",
+    "tags": [
+      { "name": "sandwiches" },
+      { "name": "roast beef" }
+    ]
+  },
+  {
+    "lat":         28.6092918,
+    "lon":         -81.2912416,
+    "description": "Incredible spicy curry on the outskirts of Winter Park.",
+    "name":        "Thai Villa",
+    "street":      "7355 Aloma Ave",
+    "city":        "Winter Park",
+    "state":       "Florida",
+    "zip":         "32792",
+    "tags": [
+      { "name": "thai" },
+      { "name": "curry" },
+      { "name": "small" }
+    ]
+  },
+  {
+    "lat":         28.5933164,
+    "lon":         -81.3581679,
+    "description": "Upscale southern food and house brewed craft beer.",
+    "name":        "Cask and Larder",
+    "street":      "565 W Fairbanks Ave",
+    "city":        "Winter Park",
+    "state":       "Florida",
+    "zip":         "32789",
+    "tags": [
+      { "name": "craft" },
+      { "name": "beer" },
+      { "name": "southern" },
+      { "name": "bar" },
+      { "name": "brunch" },
+      { "name": "dinner" }
+    ]
+  },
+  {
+    "lat":         28.543671,
+    "lon":         -81.3536967,
+    "description": "Late night epic sandwiches. Get the Thanksgiving sandwich!",
+    "name":        "Pom Pom's Teahouse & Sandwicheria",
+    "street":      "67 N Bumby Ave",
+    "city":        "Orlando",
+    "state":       "Florida",
+    "zip":         "32803",
+    "tags": [
+      { "name": "sandwiches" },
+      { "name": "late night" },
+      { "name": "tea" }
+    ]
+  },
+  {
+    "lat":         28.5551251,
+    "lon":         -81.3353936,
+    "description": "Chill gastropub with a frequently changing menu.",
+    "name":        "The Smiling Bison",
+    "street":      "745 Bennet Rd",
+    "city":        "Orlando",
+    "state":       "Florida",
+    "zip":         "32803",
+    "tags": [
+      { "name": "beer" },
+      { "name": "late night" },
+      { "name": "music" },
+      { "name": "brunch" },
+      { "name": "dinner" }
+    ]
+  }
+]

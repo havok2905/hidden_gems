@@ -34,6 +34,25 @@ RSpec.describe PlacesController, type: :controller do
   describe 'by_tags' do
     before do
       @place = Place.first
+      @place.tags = [ create(:tag, name: 'foo'), create(:tag, name: 'bar') ]
+      @place.save
+
+      get :by_tag_names, tags: 'foo,bar'
+      @result = JSON.parse response.body
+    end
+
+    it 'should bring up the place for that tag' do
+      expect(@result['places'].size).to eq 1
+
+      a_result = ComparePlace.compare_hash_instance @result['places'][0], @place
+      expect(a_result).to eq true
+    end
+  end
+
+
+  describe 'by_tag_names' do
+    before do
+      @place = Place.first
       @place.tags = [ create(:tag) ]
       @place.save
 

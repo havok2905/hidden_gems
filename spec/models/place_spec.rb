@@ -25,33 +25,55 @@ RSpec.describe Place, type: :model do
   end
 
   describe 'scopes' do
-    describe 'by_tag_ids' do
-      before do
-        # GENERATED PLACES WITH TAGS
-        # a foo(1) bar(2)
-        # b bar(2) bat(4)
-        # c foo(1) baz(3)
+    before do
+      # GENERATED PLACES WITH TAGS
+      # a foo(1) bar(2)
+      # b bar(2) bat(4)
+      # c foo(1) baz(3)
 
-        places = [
-          create(:place, name: 'a'),
-          create(:place, name: 'b'),
-          create(:place, name: 'c')
-        ]
+      places = [
+        create(:place, name: 'a'),
+        create(:place, name: 'b'),
+        create(:place, name: 'c')
+      ]
 
-        tags  = [
-          create(:tag, name: 'foo'),
-          create(:tag, name: 'bar'),
-          create(:tag, name: 'baz'),
-          create(:tag, name: 'bat')
-        ]
+      tags  = [
+        create(:tag, name: 'foo'),
+        create(:tag, name: 'bar'),
+        create(:tag, name: 'baz'),
+        create(:tag, name: 'bat')
+      ]
 
-        places[0].tags = [tags[0], tags[1]]
-        places[1].tags = [tags[1], tags[3]]
-        places[2].tags = [tags[0], tags[2]]
+      places[0].tags = [tags[0], tags[1]]
+      places[1].tags = [tags[1], tags[3]]
+      places[2].tags = [tags[0], tags[2]]
 
-        places.each { |place| place.save }
+      places.each { |place| place.save }
+    end
+
+    describe 'by_tag_names' do
+      it 'should find places with the specificed tag names' do
+        places_one_two = Place.by_tag_names ['foo', 'bar']
+        places_two_four = Place.by_tag_names ['bar', 'bat']
+        places_one_three = Place.by_tag_names ['foo', 'baz']
+        places_one = Place.by_tag_names ['foo']
+
+        expect(places_one_two.first.name).to eq 'a'
+        expect(places_one_two.count).to eq 1
+
+        expect(places_two_four.first.name).to eq 'b'
+        expect(places_two_four.size).to eq 1
+
+        expect(places_one_three.first.name).to eq 'c'
+        expect(places_one_three.size).to eq 1
+
+        expect(places_one.size).to eq 2
+        expect(places_one.first.name).to eq 'a'
+        expect(places_one.last.name).to eq 'c'
       end
+    end
 
+    describe 'by_tag_ids' do
       it 'should find places with the specificed tag ids' do
         places_one_two = Place.by_tag_ids [1,2]
         places_two_four = Place.by_tag_ids [2,4]
