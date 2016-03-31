@@ -5,6 +5,13 @@
 - **Ruby** 2.2.1p85
 - **Rails** 4.2.4
 
+## Rake
+
+`rake hidden_gems:populate`
+
+Pulls the data from `./places.json`, creates and updates all places records by name,
+and creates any new tag records. Not crazy fast, but it works.
+
 ## Tests
 
 Run `rspec spec` in the root of the project directory to run all unit tests. **Pull requests will not be accepted unless all tests pass.**
@@ -28,6 +35,7 @@ All `GET` endpoints are free and open for use, however any destructive action re
 - `/places` ( GET, POST, PUT, PATCH, DELETE )
 - `/places/tag` ( POST )
 - `/places/by_tag` ( GET )
+- `/places/by_tag_names` ( GET )
 - `/tags` ( GET, POST, PUT, PATCH, DELETE )
 
 ### Places
@@ -103,6 +111,38 @@ All `GET` endpoints are free and open for use, however any destructive action re
 ```
 
 #### (GET) /places/by_tags/1,2
+
+##### Returns
+
+```json
+{
+  "places": [
+    {
+      "id": 1,
+      "name": "Coffeehaus",
+      "description": "small, casual, and simple coffee shop",
+      "lat": 28.6585257,
+      "lon": -81.182116,
+      "street": "1016 Lockwood Blvd",
+      "city": "Oviedo",
+      "state": "FL",
+      "zip": "32765",
+      "tags": [
+        {
+          "id": 1,
+          "name": "coffee"
+        },
+        {
+          "id": 2,
+          "name": "breakfast"
+        }
+      ]
+    }
+  ]
+}
+```
+
+#### (GET) /places/by_tag_names/coffee,breakfast
 
 ##### Returns
 
