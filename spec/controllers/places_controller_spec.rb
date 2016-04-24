@@ -5,8 +5,8 @@ RSpec.describe PlacesController, type: :controller do
 
   before do
     @places = [
-      create(:place, name: 'foo', description: 'faz', lat: 0.5, lon: 0.6, city: 'city_a', street: 'street_a', zip: 'zip_a', state: 'state_a'),
-      create(:place, name: 'bar', description: 'baz', lat: 0.7, lon: 0.8, city: 'city_b', street: 'street_b', zip: 'zip_b', state: 'state_b')
+      create(:place, name: 'foo', description: 'faz', lat: 0.5, lon: 0.6, city: 'city_a', street: 'street_a', zip: 'zip_a', state: 'state_a', website: 'http://google.com', cover: 'foo.png'),
+      create(:place, name: 'bar', description: 'baz', lat: 0.7, lon: 0.8, city: 'city_b', street: 'street_b', zip: 'zip_b', state: 'state_b', website: 'http://twitter.com', cover: 'bar.png')
     ]
   end
 
@@ -146,7 +146,7 @@ RSpec.describe PlacesController, type: :controller do
 
   describe 'update' do
     before do
-      @place_params = { name: 'rat', description: 'raz', lat: 1.1, lon: 1.2, city: 'city_c', street: 'street_c', zip: 'zip_c', state: 'state_c' }
+      @place_params = { name: 'rat', description: 'raz', lat: 1.1, lon: 1.2, city: 'city_c', street: 'street_c', zip: 'zip_c', state: 'state_c', website: 'http://www.facebook.com', cover: 'rat.png' }
       @authorized_params = { id: 2, place: @place_params, secret: ENV['ADMIN_SECRET'] }
       @unauthorized_params = { id: 2, place: @place_params }
     end

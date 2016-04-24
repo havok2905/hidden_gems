@@ -13,6 +13,8 @@
 #  zip         :string
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
+#  cover       :string
+#  website     :string
 #
 
 FactoryGirl.define do
@@ -25,5 +27,7 @@ FactoryGirl.define do
     city 'Oviedo'
     state 'FL'
     zip '32765'
+    website 'http://www.yelp.com/biz/barnies-coffee-oviedo'
+    cover 'coffeehaus.png'
   end
 end

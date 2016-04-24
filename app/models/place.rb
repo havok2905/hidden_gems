@@ -13,6 +13,8 @@
 #  zip         :string
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
+#  cover       :string
+#  website     :string
 #
 
 class Place < ActiveRecord::Base

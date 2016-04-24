@@ -8,6 +8,8 @@
     "city":        "Orlando",
     "state":       "Florida",
     "zip":         "32803",
+    "website":     "http://www.obliviontaproom.com/",
+    "cover":       "oblivion_taproom.png",
     "tags": [
       { "name": "bar" },
       { "name": "beer" },
@@ -25,6 +27,8 @@
     "city":        "Orlando",
     "state":       "Florida",
     "zip":         "32803",
+    "website":     "https://www.facebook.com/Tako-Cheena-by-Pom-Pom-174918999187662/",
+    "cover":       "tako_cheena.png",
     "tags": [
       { "name": "asian" },
       { "name": "mexican" },
@@ -41,6 +45,8 @@
     "city":        "Orlando",
     "state":       "Florida",
     "zip":         "32828",
+    "website":     "http://www.thevespr.com/",
+    "cover":       "vespr.png",
     "tags": [
       { "name": "coffee" },
       { "name": "beer" },
@@ -57,6 +63,8 @@
     "city":        "Oviedo",
     "state":       "Florida",
     "zip":         "32765",
+    "website":     "http://www.kaioencoffee.com/",
+    "cover":       "kaioen.png",
     "tags": [
       { "name": "small" },
       { "name": "quiet" },
@@ -72,6 +80,8 @@
     "city":        "Winter Park",
     "state":       "Florida",
     "zip":         "32792",
+    "website":     "http://mygeekeasy.com/",
+    "cover":       "geek_easy.png",
     "tags": [
       { "name": "bar" },
       { "name": "nerdy" },
@@ -88,6 +98,8 @@
     "city":        "Orlando",
     "state":       "Florida",
     "zip":         "32817",
+    "website":     "http://www.lazymoonpizza.com/",
+    "cover":       "lazy_moon.png",
     "tags": [
       { "name": "pizza" },
       { "name": "beer" },
@@ -103,6 +115,8 @@
     "city":        "Orlando",
     "state":       "Florida",
     "zip":         "32803",
+    "webstie":     "http://beefyking.com/",
+    "cover":       "beefy_king.png",
     "tags": [
       { "name": "sandwiches" },
       { "name": "roast beef" }
@@ -117,6 +131,8 @@
     "city":        "Winter Park",
     "state":       "Florida",
     "zip":         "32792",
+    "website":     "https://www.facebook.com/Thai-Villa-Restaurant-121943484514028/",
+    "cover":       "thai_villa.png",
     "tags": [
       { "name": "thai" },
       { "name": "curry" },
@@ -132,6 +148,8 @@
     "city":        "Winter Park",
     "state":       "Florida",
     "zip":         "32789",
+    "website":     "http://www.caskandlarder.com/",
+    "cover":       "cask_and_larder.png",
     "tags": [
       { "name": "craft" },
       { "name": "beer" },
@@ -150,6 +168,8 @@
     "city":        "Orlando",
     "state":       "Florida",
     "zip":         "32803",
+    "website":     "http://pompomsteahouse.com/",
+    "cover":       "pom_poms.png",
     "tags": [
       { "name": "sandwiches" },
       { "name": "late night" },
@@ -165,6 +185,8 @@
     "city":        "Orlando",
     "state":       "Florida",
     "zip":         "32803",
+    "website":     "http://smilingbison.com/",
+    "cover":       "smiling_bison.png",
     "tags": [
       { "name": "beer" },
       { "name": "late night" },

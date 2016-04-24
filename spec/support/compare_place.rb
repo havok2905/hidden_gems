@@ -10,7 +10,9 @@ class ComparePlace
       ( hash[:city] == instance.city ) &&
       ( hash[:state] == instance.state ) &&
       ( hash[:zip] == instance.zip ) &&
-      ( hash[:street] == instance.street )
+      ( hash[:street] == instance.street ) &&
+      ( hash[:cover] == instance.cover ) &&
+      ( hash[:website] == instance.website )
     end
 
     def compare_hash_hash(hash_a, hash_b)
@@ -24,7 +26,9 @@ class ComparePlace
       ( hash_a[:city] == hash_b[:city] ) &&
       ( hash_a[:state] == hash_b[:state] ) &&
       ( hash_a[:zip] == hash_b[:zip] ) &&
-      ( hash_a[:street] == hash_b[:street] )
+      ( hash_a[:street] == hash_b[:street] ) &&
+      ( hash_a[:cover] == hash_b[:cover] ) &&
+      ( hash_a[:website] == hash_b[:website] )
     end
   end
 end
