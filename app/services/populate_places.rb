@@ -35,6 +35,8 @@ class PopulatePlaces
         p.city = place['city']
         p.state = place['state']
         p.zip = place['zip']
+        p.website = place['website']
+        p.cover = place['cover']
         p.tags = tags
       end
     end
